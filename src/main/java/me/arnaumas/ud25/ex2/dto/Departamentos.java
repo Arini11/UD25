@@ -29,14 +29,7 @@ public class Departamentos {
 	private @Getter @Setter String nombre;
 	private @Getter @Setter int presupuesto;
 
-	@OneToMany
-	@JoinColumn(name = "departamento")
-	private @Setter List<Empleados> empleado;
-
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado")
-	public List<Empleados> getEmpleado() {
-		return empleado;
-	}
-
+	@OneToMany(mappedBy= "departamento")
+	private @Getter @Setter List<Empleados> empleado;
 }

@@ -2,19 +2,19 @@ package me.arnaumas.ud25.ex3.service;
 
 import java.util.List;
 
-import me.arnaumas.ud25.ex3.dto.Cajas;
+import me.arnaumas.ud25.ex3.dto.Box;
 
 public interface ICajasService {
 
-	public List<Cajas> listarCajas();
+	public List<Box> listarCajas();
 
-	public Cajas guardarCajas(Cajas cajas);
+	public Box guardarCajas(Box cajas);
 
-	public Cajas CajasXID(String id);
+	public Box CajasXID(String id);
 
-	public List<Cajas> listarCajasAlmacenes(String almacen);
+	public List<Box> listarCajasAlmacenes(String almacen);
 
-	public Cajas actualizarCajas(Cajas cajas);
+	public Box actualizarCajas(Box cajas);
 
 	public void eliminarCajas(String numreferencia);
 }

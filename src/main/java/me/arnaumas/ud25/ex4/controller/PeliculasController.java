@@ -15,32 +15,27 @@ public class PeliculasController {
 	@Autowired
 	PeliculasServiceIMPL PeliculasServiceIMPL;
 	
-	@GetMapping("/Peliculas")
+	@GetMapping("/peliculas")
 	public List<Peliculas> listarPeliculas(){
 		return PeliculasServiceIMPL.listarPeliculas();
 	}
 	
-	@PostMapping("/Peliculas")
+	@PostMapping("/peliculas")
 	public Peliculas salvarPeliculas(@RequestBody Peliculas Peliculas) {
-		
 		return PeliculasServiceIMPL.guardarPeliculas(Peliculas);
 	}
 	
-	@GetMapping("/Peliculas/{id}")
+	@GetMapping("/peliculas/{id}")
 	public Peliculas PeliculasXID(@PathVariable(name="id") int id) {
-		
 		Peliculas Peliculas_xid= new Peliculas();
 		
 		Peliculas_xid=PeliculasServiceIMPL.PeliculasXID(id);
-		
-		System.out.println("Peliculas XID: "+Peliculas_xid);
-		
+				
 		return Peliculas_xid;
 	}
 	
-	@PutMapping("/Peliculas/{id}")
+	@PutMapping("/peliculas/{id}")
 	public Peliculas actualizarPeliculas(@PathVariable(name="id")int id,@RequestBody Peliculas Peliculas) {
-		
 		Peliculas Peliculas_seleccionado= new Peliculas();
 		Peliculas Peliculas_actualizado= new Peliculas();
 		
@@ -50,13 +45,11 @@ public class PeliculasController {
 		Peliculas_seleccionado.setClasificacionEdad(Peliculas.getClasificacionEdad());
 		
 		Peliculas_actualizado = PeliculasServiceIMPL.actualizarPeliculas(Peliculas_seleccionado);
-		
-		System.out.println("El Peliculas actualizado es: "+ Peliculas_actualizado);
-		
+				
 		return Peliculas_actualizado;
 	}
 	
-	@DeleteMapping("/Peliculas/{id}")
+	@DeleteMapping("/peliculas/{id}")
 	public void eleiminarPeliculas(@PathVariable(name="id")int id) {
 		PeliculasServiceIMPL.eliminarPeliculas(id);
 	}

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.arnaumas.ud25.ex3.dto.Almacenes;
+import me.arnaumas.ud25.ex3.dto.Warehouse;
 import me.arnaumas.ud25.ex3.service.AlmacenesServiceIMPL;
 
 @RestController
@@ -23,19 +23,19 @@ public class AlmacenesController {
 	AlmacenesServiceIMPL almacenesServiceImpl;
 
 	@GetMapping("/almacenes")
-	public List<Almacenes> listarAlmacenes() {
+	public List<Warehouse> listarAlmacenes() {
 		return almacenesServiceImpl.listarAlmaceness();
 	}
 
 	@PostMapping("/almacenes")
-	public Almacenes salvarAlmacenes(@RequestBody Almacenes Almacenes) {
+	public Warehouse salvarAlmacenes(@RequestBody Warehouse Almacenes) {
 		return almacenesServiceImpl.guardarAlmacenes(Almacenes);
 	}
 
 	@GetMapping("/almacenes/{id}")
-	public Almacenes AlmacenesXID(@PathVariable(name = "id") Long id) {
+	public Warehouse AlmacenesXID(@PathVariable(name = "id") Long id) {
 
-		Almacenes Almacenes_xid = new Almacenes();
+		Warehouse Almacenes_xid = new Warehouse();
 
 		Almacenes_xid = almacenesServiceImpl.AlmacenesXID(id);
 
@@ -45,14 +45,14 @@ public class AlmacenesController {
 	}
 
 	@PutMapping("/Almacenes/{id}")
-	public Almacenes actualizarAlmacenes(@PathVariable(name = "id") Long id, @RequestBody Almacenes Almacenes) {
+	public Warehouse actualizarAlmacenes(@PathVariable(name = "id") Long id, @RequestBody Warehouse Almacenes) {
 
-		Almacenes Almacenes_seleccionado = new Almacenes();
-		Almacenes Almacenes_actualizado = new Almacenes();
+		Warehouse Almacenes_seleccionado = new Warehouse();
+		Warehouse Almacenes_actualizado = new Warehouse();
 
 		Almacenes_seleccionado = almacenesServiceImpl.AlmacenesXID(id);
 
-		Almacenes_seleccionado.setCodigo(Almacenes.getCodigo());
+		Almacenes_seleccionado.setId(Almacenes.getId());
 		Almacenes_seleccionado.setLugar(Almacenes.getLugar());
 		Almacenes_seleccionado.setCapacidad(Almacenes.getCapacidad());
 

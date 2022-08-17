@@ -1,58 +1,34 @@
 package me.arnaumas.ud25.ex4.dto;
 
+import java.util.List;
+
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.ToString.Exclude;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name="Salas")
 public class Salas {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private int id;
-	@Column(name = "nombre")//no hace falta si se llama igual
-	private String nombre;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private @Getter @Setter int id;
+	@Column(name = "nombre")
+	private @Getter @Setter String nombre;
 	
+	@Exclude
 	@ManyToOne
-	@JoinColumn(name = "Pelicula")//no hace falta si se llama igual
-	private Peliculas Pelicula;
+	@JoinColumn(name = "pelicula")
+	private @Getter @Setter Peliculas Pelicula;
 	
-	public Salas() {
-		super();
-	}
 
-	public Salas(int id, String nombre) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-	}
-
-	public int getid() {
-		return id;
-	}
-
-	public void setid(int id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public Peliculas getPelicula() {
-		return Pelicula;
-	}
-
-	public void setPelicula(Peliculas pelicula) {
-		this.Pelicula = pelicula;
-	}
-
-	@Override
-	public String toString() {
-		return "Salas [id=" + id + ", nombre=" + nombre + "]";
-	}
 	
 }

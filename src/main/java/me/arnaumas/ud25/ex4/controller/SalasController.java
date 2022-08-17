@@ -22,30 +22,27 @@ public class SalasController {
 	@Autowired
 	SalasServiceIMPL SalasServiceIMPL;
 	
-	@GetMapping("/Salas")
+	@GetMapping("/salas")
 	public List<Salas> listarSalas(){
 		return SalasServiceIMPL.listarSalas();
 	}
 	
-	@PostMapping("/Salas")
+	@PostMapping("/salas")
 	public Salas salvarSalas(@RequestBody Salas Salas) {
-		
 		return SalasServiceIMPL.guardarSalas(Salas);
 	}
 	
-	@GetMapping("/Salas/{id}")
+	@GetMapping("/salas/{id}")
 	public Salas SalasXID(@PathVariable(name="id") int id) {
 		
 		Salas Salas_xid= new Salas();
 		
 		Salas_xid=SalasServiceIMPL.SalasXID(id);
-		
-		System.out.println("Salas XID: "+Salas_xid);
-		
+				
 		return Salas_xid;
 	}
 	
-	@PutMapping("/Salas/{id}")
+	@PutMapping("/salas/{id}")
 	public Salas actualizarSalas(@PathVariable(name="id")int id,@RequestBody Salas Salas) {
 		
 		Salas Salas_seleccionado= new Salas();
@@ -57,13 +54,11 @@ public class SalasController {
 		Salas_seleccionado.setPelicula(Salas.getPelicula());
 		
 		Salas_actualizado = SalasServiceIMPL.actualizarSalas(Salas_seleccionado);
-		
-		System.out.println("El Salas actualizado es: "+ Salas_actualizado);
-		
+				
 		return Salas_actualizado;
 	}
 	
-	@DeleteMapping("/Salas/{id}")
+	@DeleteMapping("/salas/{id}")
 	public void eleiminarSalas(@PathVariable(name="id")int id) {
 		SalasServiceIMPL.eliminarSalas(id);
 	}

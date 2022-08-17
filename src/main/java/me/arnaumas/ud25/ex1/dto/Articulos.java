@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.ToString.Exclude;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,13 +24,8 @@ public class Articulos {
 	
 	private @Getter @Setter int precio;
 	
+	@Exclude
 	@ManyToOne
-    @JoinColumn(name="fabricante")
-    private Fabricantes fabricante;
-
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Fabricantes")
-	public Fabricantes getFabricantes() {
-		return fabricante;
-	}
+    @JoinColumn(name="fabricante_id")
+    private @Getter @Setter Fabricantes fabricante;
 }

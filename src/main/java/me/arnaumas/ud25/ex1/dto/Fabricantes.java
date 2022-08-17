@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +24,8 @@ public class Fabricantes {
 
 	private @Getter @Setter String nombre;
 
-	@OneToMany
-	@JoinColumn(name = "id")
+	@JsonIgnore
+	@OneToMany(mappedBy= "fabricante")
 	private @Getter @Setter List<Articulos> articulos;
 
 }

@@ -2,17 +2,17 @@ package me.arnaumas.ud25.ex3.service;
 
 import java.util.List;
 
-import me.arnaumas.ud25.ex3.dto.Almacenes;
+import me.arnaumas.ud25.ex3.dto.Warehouse;
 
 public interface IAlmacenesService {
 
-	public List<Almacenes> listarAlmaceness();
+	public List<Warehouse> listarAlmaceness();
 
-	public Almacenes guardarAlmacenes(Almacenes Almacenes);
+	public Warehouse guardarAlmacenes(Warehouse Almacenes);
 
-	public Almacenes AlmacenesXID(Long id);
+	public Warehouse AlmacenesXID(Long id);
 
-	public Almacenes actualizarAlmacenes(Almacenes Almacenes);
+	public Warehouse actualizarAlmacenes(Warehouse Almacenes);
 
 	public void eliminarAlmacenes(Long id);
 }

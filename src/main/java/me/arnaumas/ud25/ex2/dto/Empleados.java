@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.ToString.Exclude;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,8 +24,9 @@ public class Empleados {
 	private @Getter @Setter String nombre;
 	private @Getter @Setter String apellidos;
 
+	@Exclude
 	@ManyToOne
-	@JoinColumn(name = "departamento")
+	@JoinColumn(name = "cod_dep")
 	private @Getter @Setter Departamentos departamento;
 
 }

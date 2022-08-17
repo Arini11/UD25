@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.arnaumas.ud25.ex3.dao.IAlmacenesDAO;
-import me.arnaumas.ud25.ex3.dto.Almacenes;
+import me.arnaumas.ud25.ex3.dto.Warehouse;
 
 @Service
 public class AlmacenesServiceIMPL implements IAlmacenesService{
@@ -14,22 +14,22 @@ public class AlmacenesServiceIMPL implements IAlmacenesService{
 	@Autowired
 	IAlmacenesDAO iAlmacenesDAO;
 	@Override
-	public List<Almacenes> listarAlmaceness() {
+	public List<Warehouse> listarAlmaceness() {
 		return iAlmacenesDAO.findAll();
 	}
 
 	@Override
-	public Almacenes guardarAlmacenes(Almacenes almacenes) {
+	public Warehouse guardarAlmacenes(Warehouse almacenes) {
 		return iAlmacenesDAO.save(almacenes);
 	}
 
 	@Override
-	public Almacenes AlmacenesXID(Long id) {
+	public Warehouse AlmacenesXID(Long id) {
 		return iAlmacenesDAO.findById(id).get();
 	}
 
 	@Override
-	public Almacenes actualizarAlmacenes(Almacenes almacenes) {
+	public Warehouse actualizarAlmacenes(Warehouse almacenes) {
 		return iAlmacenesDAO.save(almacenes);
 	}
 

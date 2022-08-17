@@ -1,78 +1,76 @@
 --ex1
 DROP table IF EXISTS fabricantes;
+DROP table IF EXISTS articulos;
 create table fabricantes(
 id int auto_increment,
 nombre varchar(100),
 PRIMARY KEY (id)
 );
-DROP table IF EXISTS articulos;
 create table articulos(
 id int auto_increment,
 nombre varchar(100),
 precio int,
-fabricante int,
+fabricante_id int,
 PRIMARY KEY(id),
-FOREIGN KEY(fabricante) REFERENCES fabricantes (id)
+FOREIGN KEY(fabricante_id) REFERENCES fabricantes (id)
 );
 insert into fabricantes(nombre) values('fab1');
 insert into fabricantes(nombre) values('fab2');
 insert into fabricantes(nombre) values('fab3');
 insert into fabricantes(nombre) values('fab4');
 insert into fabricantes(nombre) values('fab5');
-insert into articulos(nombre, precio, fabricante) values('tg1', 111, 1);
-insert into articulos(nombre, precio, fabricante) values('tg2', 222, 2);
-insert into articulos(nombre, precio, fabricante) values('tg3', 333, 3);
-insert into articulos(nombre, precio, fabricante) values('tg4', 444, 4);
-insert into articulos(nombre, precio, fabricante) values('tg5', 555, 5);
+insert into articulos(nombre, precio, fabricante_id) values('tg1', 111, 1);
+insert into articulos(nombre, precio, fabricante_id) values('tg2', 222, 2);
+insert into articulos(nombre, precio, fabricante_id) values('tg3', 333, 3);
+insert into articulos(nombre, precio, fabricante_id) values('tg4', 444, 4);
+insert into articulos(nombre, precio, fabricante_id) values('tg5', 555, 5);
 
 --ex2
 DROP TABLE IF EXISTS Departamentos;
 DROP TABLE IF EXISTS Empleados;
 CREATE TABLE Departamentos(
-codigo int,
+codigo int PRIMARY KEY,
 nombre nvarchar(100),
-presupuesto int,
-PRIMARY KEY(codigo)
+presupuesto int
 );
 CREATE TABLE Empleados(
-dni varchar(9),
+dni varchar(9) PRIMARY KEY,
 nombre nvarchar(100),
 apellidos nvarchar(255),
-departamento int,
-PRIMARY KEY (dni),
-FOREIGN KEY (departamento) REFERENCES Departamentos(codigo)
+cod_dep int,
+FOREIGN KEY (cod_dep) REFERENCES Departamentos(codigo)
 );
 INSERT INTO Departamentos(codigo, nombre, presupuesto) VALUES(1, 'Dp1', 260);
 INSERT INTO Departamentos(codigo, nombre, presupuesto) VALUES(2, 'Dp2', 550);
 INSERT INTO Departamentos(codigo, nombre, presupuesto) VALUES(3, 'Dp3', 300);
-INSERT INTO Empleados(dni, nombre, apellidos, departamento) VALUES('399', 'Arnau', 'Mas', 1);
-INSERT INTO Empleados(dni, nombre, apellidos, departamento) VALUES('778', 'Juan', 'Marin', 2);
+INSERT INTO Empleados(dni, nombre, apellidos, cod_dep) VALUES('399', 'Arnau', 'Mas', 1);
+INSERT INTO Empleados(dni, nombre, apellidos, cod_dep) VALUES('778', 'Juan', 'Marin', 2);
 
 --ex3
-DROP table IF EXISTS almacenes;
-DROP table IF EXISTS cajas;
-create TABLE almacenes(
-	codigo int auto_increment PRIMARY KEY,
+DROP table IF EXISTS warehouses;
+DROP table IF EXISTS boxes;
+create TABLE warehouses(
+	id int auto_increment PRIMARY KEY,
 	lugar varchar(100),
 	capacidad int
 );
-create table cajas(
+create table boxes(
 	num_ref varchar(5) PRIMARY KEY,
 	valor int,
 	contenido varchar(100),
-	codigo_almacen int,
-	FOREIGN KEY(codigo_almacen) REFERENCES almacenes(codigo)
+	warehouse_id int,
+	FOREIGN KEY(warehouse_id) REFERENCES warehouses(id)
 );
-INSERT INTO almacenes(lugar, capacidad) values('AL1',10);
-INSERT INTO almacenes(lugar, capacidad) values('AL2',20);
-INSERT INTO almacenes(lugar, capacidad) values('AL3',30);
-INSERT INTO almacenes(lugar, capacidad) values('AL4',40);
-INSERT INTO almacenes(lugar, capacidad) values('AL5',50);
-INSERT INTO cajas(num_ref, valor, contenido, codigo_almacen) values('AB122',10,'perfil',1);
-INSERT INTO cajas(num_ref, valor, contenido, codigo_almacen) values('CD456',20,'kit',1);
-INSERT INTO cajas(num_ref, valor, contenido, codigo_almacen) values('EF789',30,'brazo',2);
-INSERT INTO cajas(num_ref, valor, contenido, codigo_almacen) values('GH123',40,'motor',2);
-INSERT INTO cajas(num_ref, valor, contenido, codigo_almacen) values('IJ456',50,'panel',3);
+INSERT INTO warehouses(lugar, capacidad) values('AL1',10);
+INSERT INTO warehouses(lugar, capacidad) values('AL2',20);
+INSERT INTO warehouses(lugar, capacidad) values('AL3',30);
+INSERT INTO warehouses(lugar, capacidad) values('AL4',40);
+INSERT INTO warehouses(lugar, capacidad) values('AL5',50);
+INSERT INTO boxes(num_ref, valor, contenido, warehouse_id) values('AB122',10,'perfil',1);
+INSERT INTO boxes(num_ref, valor, contenido, warehouse_id) values('CD456',20,'kit',1);
+INSERT INTO boxes(num_ref, valor, contenido, warehouse_id) values('EF789',30,'brazo',2);
+INSERT INTO boxes(num_ref, valor, contenido, warehouse_id) values('GH123',40,'motor',2);
+INSERT INTO boxes(num_ref, valor, contenido, warehouse_id) values('IJ456',50,'panel',3);
 
 --ex4
 DROP TABLE IF EXISTS peliculas;
