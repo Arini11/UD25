@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import me.arnaumas.ud25.ex1.dto.Articulos;
 
 
 @AllArgsConstructor
