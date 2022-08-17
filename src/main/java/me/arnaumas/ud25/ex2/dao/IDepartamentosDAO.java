@@ -1,9 +1,0 @@
-package me.arnaumas.ud25.ex2.dao;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import me.arnaumas.ud25.ex2.dto.Departamentos;
-
-public interface IDepartamentosDAO extends JpaRepository<Departamentos, Long> {
-
-}
